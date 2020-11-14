@@ -7,7 +7,7 @@ namespace EmployeeManagement.Models
 {
     public class MockEmployeeRepository : IEmployeeRepository
     {
-        List<Employee> employeeList;
+        private List<Employee> employeeList;
 
         public MockEmployeeRepository()
         {
@@ -19,9 +19,15 @@ namespace EmployeeManagement.Models
             };
         }
 
-        public IEnumerable<Employee> ListAll()
+        public IEnumerable<Employee> GetAllEmployee()
         {
             return employeeList;
+        }
+
+        public Employee GetEmployee(int id)
+        {
+            Employee employee = employeeList.FirstOrDefault(x => x.Id == id);
+            return employee;
         }
     }
 }

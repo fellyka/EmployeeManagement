@@ -19,8 +19,13 @@ namespace EmployeeManagement.Controllers
       
         public IActionResult Index()
         {
-            IEnumerable<Employee> emp = repo.ListAll();
+            IEnumerable<Employee> emp = repo.GetAllEmployee();
             return View(emp);
+        }
+
+        public string Details(int id)
+        {
+             return repo.GetEmployee(1).Name;
         }
     }
 }
