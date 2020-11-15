@@ -12,9 +12,11 @@ namespace EmployeeManagement.Models
         [Required]
         [MaxLength(50, ErrorMessage ="Name should not contain more than 30 characters")]
         public string Name { get; set; }
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
-        public string Department { get; set; }
+        [Required]
+        public Dept? Department { get; set; }
     }
 }
