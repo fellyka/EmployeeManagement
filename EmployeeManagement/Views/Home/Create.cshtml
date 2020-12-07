@@ -1,13 +1,13 @@
-﻿@model Employee
+﻿@model EmployeeCreateViewModel
 
 @{ 
     ViewBag.Pagetitle = "Create Employee";
 
 }
 
-<form asp-controller="Home" asp-action="Create" method="post" class="mt-3">
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post" class="mt-3"> @*enctype attribute support file upload*@
 
-   <div asp-validation-summary="All" class="text-danger"></div>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group row">
         <label asp-for="Name" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
@@ -35,7 +35,31 @@
         </div>
     </div>
 
-    <div>
-        <button type="submit" class="btn btn-primary">Create</button>
+
+    <div class="form-group row">
+        <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input asp-for="Photo" class="form-control custom-file-input" />
+                <label class="custom-file-label">Choose File...</label>
+            </div>
+        </div>
     </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+
+    @section Scripts{
+       <script>
+           $(document).ready(function () {
+               $('.custom-file-input').on("change", function () {
+                   var fileName = $(this).val().split("\\").pop();
+                   $(this).next('.custom-file-label').html(fileName);
+               });
+           });
+       </script>
+     }
 </form>
