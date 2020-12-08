@@ -1,0 +1,84 @@
+﻿@model EmployeeEditViewModel
+
+@{
+    ViewBag.Pagetitle = "Edit Employee";
+    var photoPath = "~/images/" + (Model.ExistingPhotoPath ?? "MaleEmp1.png");
+
+}
+
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Edit" method="post" class="mt-3">
+    @*enctype attribute support file upload*@
+    <input hidden asp-for="Id" /> @*to hide the id of the data being edited*@
+    <input hidden asp-for="ExistingPhotoPath" /> @*to hide the ExistingPhotoPath data being edited*@
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Name" class="form-control" placeholder="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Department" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <select asp-for="Department" class="custom-select mr-sm-2"
+                    asp-items="Html.GetEnumSelectList<Dept>()">
+                <option value="">Please Select</option>
+            </select>
+            <span asp-validation-for="Department" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label asp-for="Photos" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input multiple asp-for="Photos" class="form-control custom-file-input" /> @*without multiple attribute, only on file could be uploaded*@
+                <label class="custom-file-label">Upload new photo here</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row col-sm-4 offset-4">
+        @*Display the Employee's photo to be edited - if no photo exist, use a default photo
+        as specified in the photopath variable*@
+        <img src="@photoPath" class="imageThubnail" asp-append-version="true" />
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="home" asp-action="Index" class="btn btn-primary">Cancel</a> @*If cancelled, redirect to Index*@ 
+        </div>
+    </div>
+
+    @section Scripts{
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileLabel = $(this).next('.custom-file-label');
+                    var files = $(this)[0].files;
+                    if (files.length > 1) {
+                        fileLabel.html(files.length + 'files selected');
+                    }
+                    else if (files.length == 1) {
+                        fileLabel.html(files[0].name);
+                    }
+                });
+            });
+        </script>
+    }
+</form>
+

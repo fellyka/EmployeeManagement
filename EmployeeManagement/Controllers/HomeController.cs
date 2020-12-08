@@ -51,21 +51,8 @@ namespace EmployeeManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                string uniqueFileName = null;
-                if(model.Photos != null && model.Photos.Count > 0)
-                {
-                    foreach (IFormFile photo in model.Photos)
-                    {
-
-                        //WebRootPath property provides us the absolute path to the wwwroot folder where we'll upload the images
-                        string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                        uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName; //Allows file to have a unique name
-                        string filePath = Path.Combine(uploadFolder, uniqueFileName);
-                        //CopyTo file is a method  from IFormFile that copies the contents of the uploaded file to the target stream -- images folder in wwwroot in our case.
-                        photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                    }
-                }
-
+                //ProcessUploadFile() is a refactored method. Go to is definition to for more info
+                string uniqueFileName = ProcessUploadedFile(model);   
                 Employee newEmployee = new Employee
                 {
                     Name = model.Name,
@@ -79,6 +66,78 @@ namespace EmployeeManagement.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Employee employee = repo.GetEmployee(id); //find data to be edited
+            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel  //edit data
+            {
+                Id = employee.Id,
+                Name = employee.Name,
+                Email = employee.Email,
+                Department = employee.Department,
+                ExistingPhotoPath = employee.PhotoPath
+            };
+            return View(employeeEditViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EmployeeEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee employee = repo.GetEmployee(model.Id);
+                //Updating the data. The Id is mapped with the hidden file in the Edit view(HttpGet)
+                employee.Name = model.Name;
+                employee.Email = model.Email;
+                employee.Department = model.Department;
+                //ProcessUploadFile() is a refactored method to avaoid code duplication.
+                //Go to is definition to for more info
+
+                if (model.Photos != null)
+                {
+                    if(model.ExistingPhotoPath != null) //Does the user have an existing photo?
+                    {
+                        //Get the physical root of photo with WebRootPath using IWebHostingEnvironment object
+                       string filePath = Path.Combine(hostingEnvironment.WebRootPath, "images", model.ExistingPhotoPath);
+                        System.IO.File.Delete(filePath); //After finding the path with the line above, delete the photo
+                    }
+                    employee.PhotoPath = ProcessUploadedFile(model);
+                }
+
+                repo.Update(employee);
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+        private string ProcessUploadedFile(EmployeeCreateViewModel model)
+        {
+            string uniqueFileName = null;
+            if (model.Photos != null && model.Photos.Count > 0)
+            {
+                foreach (IFormFile photo in model.Photos)
+                {
+
+                    //WebRootPath property provides us the absolute path to the wwwroot folder where we'll upload the images
+                    string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName; //Allows file to have a unique name
+                    string filePath = Path.Combine(uploadFolder, uniqueFileName);
+                    //CopyTo file is a method  from IFormFile that copies the contents of the uploaded file to the target stream -- images folder in wwwroot in our case.
+
+                    //Properly dispose the FileStream to avoid error
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        photo.CopyTo(fileStream);
+                    }
+                       
+                }
+            }
+
+            return uniqueFileName;
         }
     }
 }
