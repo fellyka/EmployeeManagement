@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Models;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -51,14 +52,18 @@ namespace EmployeeManagement.Controllers
             if (ModelState.IsValid)
             {
                 string uniqueFileName = null;
-                if(model.Photo != null)
+                if(model.Photos != null && model.Photos.Count > 0)
                 {
-                    //WebRootPath property provides us the absolute path to the wwwroot folder where we'll upload the images
-                  string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                  uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName; //Allows file to have a unique name
-                  string filePath =  Path.Combine(uploadFolder,uniqueFileName);
-                    //CopyTo file is a method  from IFormFile that copies the contents of the uploaded file to the target stream -- images folder in wwwroot in our case.
-                    model.Photo.CopyTo(new FileStream(filePath,FileMode.Create));
+                    foreach (IFormFile photo in model.Photos)
+                    {
+
+                        //WebRootPath property provides us the absolute path to the wwwroot folder where we'll upload the images
+                        string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName; //Allows file to have a unique name
+                        string filePath = Path.Combine(uploadFolder, uniqueFileName);
+                        //CopyTo file is a method  from IFormFile that copies the contents of the uploaded file to the target stream -- images folder in wwwroot in our case.
+                        photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                    }
                 }
 
                 Employee newEmployee = new Employee
