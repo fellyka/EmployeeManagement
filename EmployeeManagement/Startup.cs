@@ -38,6 +38,18 @@ namespace EmployeeManagement
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                //  app.UseStatusCodePages(); -- Not so good for production environment
+
+                //{0} is a placeholder that receive a non success status code : 404
+               // app.UseStatusCodePagesWithRedirects("/Error/{0}");
+
+
+
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+            }
 
             app.UseStaticFiles();
             app.UseRouting();
