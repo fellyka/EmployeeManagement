@@ -43,11 +43,10 @@ namespace EmployeeManagement
                 //  app.UseStatusCodePages(); -- Not so good for production environment
 
                 //{0} is a placeholder that receive a non success status code : 404
-               // app.UseStatusCodePagesWithRedirects("/Error/{0}");
+               // app.UseStatusCodePagesWithRedirects("/Error/{0}");  -- returns a 200 in the background which is wrong
 
-
-
-                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+               //Clever peiece of middleware
+                app.UseStatusCodePagesWithReExecute("/Error/{0}"); //--generate a status code 404, not a 200 ok and it preserves the original url
 
             }
 
