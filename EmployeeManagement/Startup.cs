@@ -23,6 +23,7 @@ namespace EmployeeManagement
         }
         public void ConfigureServices(IServiceCollection services)
         {
+           // services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddDbContextPool<AppDbContext>(sqlDb => sqlDb.UseSqlServer(config.GetConnectionString("EmpDbConnection")));
             services.AddControllersWithViews();
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();

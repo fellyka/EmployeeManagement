@@ -31,11 +31,18 @@ namespace EmployeeManagement.Controllers
 
         public IActionResult Details(int? id)
         {
+            Employee employee = repo.GetEmployee(id.Value);
+
+            if(employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound", id.Value);
+            }
+
             HomeDetailsViewModels homeDetailsViewModels = new HomeDetailsViewModels()
             {
-                Employee = repo.GetEmployee(id ?? 1),
+                Employee = employee,
                 PageTitle = "Employee Details"
-
             };
            return View(homeDetailsViewModels);
         }
