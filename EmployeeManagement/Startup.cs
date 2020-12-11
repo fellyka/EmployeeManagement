@@ -32,14 +32,17 @@ namespace EmployeeManagement
         }
 
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)//This method process the HttpResquest piple line
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment()) //To use only during development
             {
                 app.UseDeveloperExceptionPage();
             }
             else
             {
+
+                app.UseExceptionHandler("/Error"); //To handle Unhandeled exception
+
                 //  app.UseStatusCodePages(); -- Not so good for production environment
 
                 //{0} is a placeholder that receive a non success status code : 404

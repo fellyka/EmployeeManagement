@@ -31,6 +31,7 @@ namespace EmployeeManagement.Controllers
 
         public IActionResult Details(int? id)
         {
+            throw new Exception("Error in Details");
             Employee employee = repo.GetEmployee(id.Value);
 
             if(employee == null)
