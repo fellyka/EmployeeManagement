@@ -63,3 +63,5 @@ C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\b
 C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\NLog.dll
 C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
 C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
+C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

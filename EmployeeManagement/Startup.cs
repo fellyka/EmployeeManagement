@@ -2,6 +2,7 @@ using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,9 +26,14 @@ namespace EmployeeManagement
         {
            // services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddDbContextPool<AppDbContext>(sqlDb => sqlDb.UseSqlServer(config.GetConnectionString("EmpDbConnection")));
+
+            //Using EF Core to retreive user and role in the underlying DB
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+
             services.AddControllersWithViews();
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
           //  services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+
 
         }
 
@@ -55,6 +61,8 @@ namespace EmployeeManagement
 
             app.UseStaticFiles();
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

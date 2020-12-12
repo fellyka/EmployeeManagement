@@ -1,4 +1,6 @@
 ﻿
+1. Refractored methods
+
  ProcessUploadedFile(model) method has been refactored. It is used in both, Create and Edit action methods in the HomeController.
  It uses. The EmployeeEditViewModel inherits from the EmployeeCreateViewModel.
  The ProcessUploadedFile is therefore of type EmployeeCreateViewModel
@@ -26,3 +28,32 @@ if (model.Photos != null && model.Photos.Count > 0)
     }
 } //end
 ********************************************************************************************************************************************
+
+2. LogLevel indicates the severity of the logged message
+       Trace = 0
+       Debug = 1
+       Information = 2
+       Warning = 3
+       Error = 4
+       Critical = 5
+       None = 6
+*********************************************************************************************************************************************
+
+3. Asp.Net Core Identity is a built-in membership system that allows us to :
+       create, read, update and delete user accounts, 
+       account confirmation
+       authentication and authorization
+       password recovery
+       two-factor authentication with sms
+       supports external login providers like Microsoft, Facebook, Google, etc
+
+  ##Steps:
+     Change the  public class AppDbContext : DbContext to  public class AppDbContext : IdentityDbContext
+     Make sure you add using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+     Add the following in the startup class:
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
+             app.UseAuthentication()
+
+    In the PM Console:
+    Add-Migration MigrationName //To Add users in the underlying DB
+    Update-Database

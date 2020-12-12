@@ -19,3 +19,15 @@
    at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
    at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2020-12-12 16:45:31.9686|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 16:45:32.9623|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 16:45:33.1948|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 16:51:18.5672|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 16:51:19.3308|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 16:51:19.5010|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 16:54:00.9613|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 16:54:01.7824|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 16:54:02.3965|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 16:55:43.2023|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 16:55:43.6998|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 16:55:43.7484|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement

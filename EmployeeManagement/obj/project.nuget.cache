@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6umU1PLHD07LJS4O5qfw3fDwnhXv2cwXbkz2vUH0zrBPo2qN7h8UK/JCKTxZ4FYhV6lg7YJ8MmIHeB7ZP9+Ecg==",
+  "dgSpecHash": "6ZIjITxB3t0T8heiZfy+m79wkB3jirlujFbOnH32XJ5Ej5mvNs07vsFzVtQ+Y8OmDrmCTq/dOYKYZcDdR17JOA==",
   "success": true,
   "projectFilePath": "C:\\Users\\felly\\OneDrive\\Desktop\\Projects\\EmployeeManagement\\EmployeeManagement\\EmployeeManagement.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\felly\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.0\\microsoft.aspnetcore.cryptography.internal.3.1.0.nupkg.sha512",
+    "C:\\Users\\felly\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.0\\microsoft.aspnetcore.cryptography.keyderivation.3.1.0.nupkg.sha512",
+    "C:\\Users\\felly\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.0\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -22,6 +25,8 @@
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.0\\microsoft.extensions.configuration.binder.3.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.0\\microsoft.extensions.dependencyinjection.3.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.0\\microsoft.extensions.dependencyinjection.abstractions.3.1.0.nupkg.sha512",
+    "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.0\\microsoft.extensions.identity.core.3.1.0.nupkg.sha512",
+    "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.identity.stores\\3.1.0\\microsoft.extensions.identity.stores.3.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.logging\\3.1.0\\microsoft.extensions.logging.3.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.0\\microsoft.extensions.logging.abstractions.3.1.0.nupkg.sha512",
     "C:\\Users\\felly\\.nuget\\packages\\microsoft.extensions.options\\3.1.0\\microsoft.extensions.options.3.1.0.nupkg.sha512",
