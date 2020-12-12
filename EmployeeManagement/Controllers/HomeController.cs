@@ -31,7 +31,7 @@ namespace EmployeeManagement.Controllers
 
         public IActionResult Details(int? id)
         {
-            throw new Exception("Error in Details");
+           // throw new Exception("Error in Details");  //-- used to simulate an exception, to be removed in production release 
             Employee employee = repo.GetEmployee(id.Value);
 
             if(employee == null)

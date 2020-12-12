@@ -59,3 +59,7 @@ C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\o
 C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Home\EmployeeNotFound.cshtml.g.cs
 C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\NotFound.cshtml.g.cs
 C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\nlog.config
+C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\NLog.dll
+C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
