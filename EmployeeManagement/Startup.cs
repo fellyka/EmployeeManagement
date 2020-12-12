@@ -46,7 +46,6 @@ namespace EmployeeManagement
             }
             else
             {
-
                 app.UseExceptionHandler("/Error"); //To handle Unhandeled exception
 
                 //  app.UseStatusCodePages(); -- Not so good for production environment

@@ -31,3 +31,16 @@
 2020-12-12 16:55:43.2023|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
 2020-12-12 16:55:43.6998|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2020-12-12 16:55:43.7484|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 17:40:27.0240|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 17:40:28.0418|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 17:40:28.6922|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 17:42:56.7186|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 17:42:57.1296|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 17:42:57.1381|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 17:46:28.2338|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 17:46:28.5823|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 17:46:28.7949|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 17:49:25.4188|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2020-12-12 17:49:27.3913|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
+2020-12-12 17:49:31.3508|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
+2020-12-12 18:27:31.7896|WARN|Microsoft.AspNetCore.Identity.UserManager|User b1a45d6d-c651-4412-bc7d-619b100d0a93 password validation failed: PasswordTooShort;PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper.
