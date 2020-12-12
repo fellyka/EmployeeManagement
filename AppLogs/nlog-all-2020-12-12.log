@@ -44,3 +44,8 @@
 2020-12-12 17:49:27.3913|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development
 2020-12-12 17:49:31.3508|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\felly\OneDrive\Desktop\Projects\EmployeeManagement\EmployeeManagement
 2020-12-12 18:27:31.7896|WARN|Microsoft.AspNetCore.Identity.UserManager|User b1a45d6d-c651-4412-bc7d-619b100d0a93 password validation failed: PasswordTooShort;PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper.
+2020-12-12 19:03:13.3846|WARN|Microsoft.AspNetCore.Identity.UserManager|User 76df0ae5-ddc4-4b2b-a677-c2f45f861a73 password validation failed: PasswordTooShort;PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper;PasswordRequiresUniqueChars.
+2020-12-12 20:04:00.2865|WARN|Microsoft.AspNetCore.Identity.UserManager|Invalid password for user a2685abe-6cc3-489c-ba92-de9fa9ceec97.
+2020-12-12 20:04:00.5167|WARN|Microsoft.AspNetCore.Identity.SignInManager|User a2685abe-6cc3-489c-ba92-de9fa9ceec97 failed to provide the correct password.
+2020-12-12 20:04:11.3007|WARN|Microsoft.AspNetCore.Identity.UserManager|Invalid password for user a2685abe-6cc3-489c-ba92-de9fa9ceec97.
+2020-12-12 20:04:11.4076|WARN|Microsoft.AspNetCore.Identity.SignInManager|User a2685abe-6cc3-489c-ba92-de9fa9ceec97 failed to provide the correct password.
