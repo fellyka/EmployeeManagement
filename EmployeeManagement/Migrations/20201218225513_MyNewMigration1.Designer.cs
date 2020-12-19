@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201212141039_AddingIdentity")]
-    partial class AddingIdentity
+    [Migration("20201218225513_MyNewMigration1")]
+    partial class MyNewMigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

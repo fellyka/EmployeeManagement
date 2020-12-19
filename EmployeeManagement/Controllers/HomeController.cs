@@ -1,6 +1,7 @@
 ﻿using EmployeeManagement.Models;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,8 +10,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace EmployeeManagement.Controllers
 {
+   // [Authorize]
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository repo;
@@ -22,13 +25,14 @@ namespace EmployeeManagement.Controllers
             this.hostingEnvironment = hostingEnvironment;
         }
 
-      
+        [AllowAnonymous]
         public IActionResult Index()
         {
             IEnumerable<Employee> emp = repo.GetAllEmployee();
             return View(emp);
         }
 
+        [AllowAnonymous]
         public IActionResult Details(int? id)
         {
            // throw new Exception("Error in Details");  //-- used to simulate an exception, to be removed in production release 
