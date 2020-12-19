@@ -41,7 +41,7 @@ namespace EmployeeManagement.Controllers
                 //user loggedin succesfully? Redirect to the Index page of HomeController 
                 if (result.Succeeded)
                 {
-                    if(!string.IsNullOrEmpty(returnUrl))
+                    if (!string.IsNullOrEmpty(returnUrl))
                     {
                         return LocalRedirect(returnUrl);
                     }
@@ -50,11 +50,11 @@ namespace EmployeeManagement.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                   
+
                 }
 
                 //If login doesn't succed
-                  ModelState.AddModelError(String.Empty, "Invalid Login Attempt");                
+                ModelState.AddModelError(String.Empty, "Invalid Login Attempt");
             }
             return View(model);
         }
@@ -66,7 +66,7 @@ namespace EmployeeManagement.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-      
+
 
         [HttpGet]
         [AllowAnonymous]
@@ -80,13 +80,13 @@ namespace EmployeeManagement.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 //user created succesfully? create, save  and redirect user to the Index page of HomeController 
-                if (result.Succeeded) 
+                if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
@@ -94,12 +94,35 @@ namespace EmployeeManagement.Controllers
 
                 //If false, loop through each error that will be 
                 //displayed by the validation summary in the Register.cshtml
-               foreach(var error in result.Errors)
+                foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
             }
             return View(model);
+        }
+
+
+        //This method checks whether the email is already taken
+        //by anither user
+        [AcceptVerbs("Get", "Post")]
+        [AllowAnonymous]
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+
+            //If email isn't already in use
+            if (user == null)
+            {
+                //Because the Jquery client validation issues an ajax call,
+                //the return type of IsEmailInUse is  Json()
+                return Json(true);
+            }
+
+            else
+            {
+                return Json($"Email {email} is already in use");
+            }
         }
     }
 }

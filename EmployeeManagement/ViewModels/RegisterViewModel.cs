@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace EmployeeManagement.ViewModels
     {
         [Required]
         [EmailAddress]
+        //This Remote attribute calls IsEmailInUse action method
+        //defined in the AccountController
+        [Remote(action:"IsEmailInUse", controller:"Accoount")]
         public string Email{get;set;}
 
         [Required]

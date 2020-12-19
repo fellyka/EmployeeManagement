@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Controllers
 {
-   // [Authorize]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository repo;

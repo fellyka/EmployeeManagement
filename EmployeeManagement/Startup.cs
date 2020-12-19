@@ -30,6 +30,7 @@ namespace EmployeeManagement
             services.AddDbContextPool<AppDbContext>(sqlDb => sqlDb.UseSqlServer(config.GetConnectionString("EmpDbConnection")));
 
             //Using EF Core to retreive user and role in the underlying DB
+            //This code add other tables in the DB, like users, claims, roles, etc
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 //Configure some of PasswordOptions class properties
@@ -45,9 +46,6 @@ namespace EmployeeManagement
                                  .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
-
-            //https://www.youtube.com/watch?v=uET7MjhUeY4&list=PL6n9fhu94yhVkdrusLaQsfERmL_Jh4XmU&index=71&ab_channel=kudvenkat
-            //services.ConfigureApplicationCookie(options => options.LoginPath = new PathString("/Account/Login"));
 
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
           //  services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
@@ -80,6 +78,7 @@ namespace EmployeeManagement
             app.UseRouting();
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

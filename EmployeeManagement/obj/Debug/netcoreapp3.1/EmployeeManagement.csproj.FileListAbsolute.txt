@@ -134,3 +134,8 @@ C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\obj\Debug\n
 C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.dll
 C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.pdb
 C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\obj\Debug\netcoreapp3.1\EmployeeManagement.genruntimeconfig.cache
+C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\felly\Desktop\Project\EmployeeManagement\EmployeeManagement\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
