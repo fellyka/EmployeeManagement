@@ -31,7 +31,7 @@ namespace EmployeeManagement.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +41,16 @@ namespace EmployeeManagement.Controllers
                 //user loggedin succesfully? Redirect to the Index page of HomeController 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    if(!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return LocalRedirect(returnUrl);
+                    }
+
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                   
                 }
 
                 //If login doesn't succed
