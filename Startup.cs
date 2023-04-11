@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,16 +27,29 @@ namespace EmployeeManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
+            app.Use(async (context, next)=>
+            {
+                logger.LogInformation("MW1: Incoming Request");
+                await next();
+                logger.LogInformation("MW2: Outgoing Request");
+
+            });
+
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync(_config["MyKey"]);
+                await context.Response.WriteAsync("MW3: Request handled and response produced");
+                logger.LogInformation("MW3: Request handled and response produced");
+               // await context.Response.WriteAsync(_config["MyKey"]);
+               // await context.Response.WriteAsync("Hello Folks!");
             });
         }
     }
