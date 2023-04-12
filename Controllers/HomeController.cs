@@ -25,7 +25,7 @@ namespace EmployeeManagement.Controllers
         public IActionResult Details()
         {
             Employee model = _employeeRepository.GetEmployee(1);
-            return Json(model);
+            return View(model);
         }
     }
 }
