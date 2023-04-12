@@ -27,7 +27,7 @@ namespace EmployeeManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -36,20 +36,14 @@ namespace EmployeeManagement
 
             app.UseStaticFiles();
 
-            app.Use(async (context, next)=>
-            {
-                logger.LogInformation("MW1: Incoming Request");
-                await next();
-                logger.LogInformation("MW2: Outgoing Request");
-
-            });
+          
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("MW3: Request handled and response produced");
-                logger.LogInformation("MW3: Request handled and response produced");
+                throw new Exception("Error");
+               
                // await context.Response.WriteAsync(_config["MyKey"]);
-               // await context.Response.WriteAsync("Hello Folks!");
+                await context.Response.WriteAsync("Hello Folks!");
             });
         }
     }
