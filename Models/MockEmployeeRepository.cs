@@ -22,5 +22,12 @@ namespace EmployeeManagement.Models
         {
             return _employeeList.FirstOrDefault(e => e.Id == id);
         }
+
+        IEnumerable<Employee> IEmployeeRepository.GetAllEmployee()
+        {
+            return _employeeList;
+        }
+
+      
     }
 }

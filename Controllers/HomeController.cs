@@ -17,10 +17,10 @@ namespace EmployeeManagement.Controllers
         {
             _employeeRepository = employeeRepository;
         }
-        public string Index()
+        public IActionResult Index()
         {
-            var employee = _employeeRepository.GetEmployee(1).Name;
-            return employee;
+            var model = _employeeRepository.GetAllEmployee();
+            return View(model);
         }
 
         public IActionResult Details()
