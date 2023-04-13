@@ -8,6 +8,9 @@ namespace EmployeeManagement.Models
         public string Name { get; set; }
 
         public string Email { get; set; }
-        public string Department { get; set; }
+        // public string Department { get; set; }
+
+        //Composition
+        public Dept Department { get; set; }
     }
 }
