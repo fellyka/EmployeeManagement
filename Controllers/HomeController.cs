@@ -34,9 +34,20 @@ namespace EmployeeManagement.Controllers
             return View(homeDetailsViewModel);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        /* We could also use IActionResult since RedirectToActionResult inherits from 
+           IActionResult 
+        */
+        public RedirectToActionResult Create(Employee employee) 
+        {
+           Employee newEmployee = _employeeRepository.Add(employee);
+           return RedirectToAction("details", new {id = newEmployee.Id});
         }
     }
 }
