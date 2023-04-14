@@ -3,14 +3,16 @@ using EmployeeManagement.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeManagement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230414154445_Second_Migration_Seeding_Data")]
+    partial class Second_Migration_Seeding_Data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,8 +41,7 @@ namespace EmployeeManagement.Migrations
 
                     b.HasData(
                         new { Id = 1, Department = 1, Email = "fellyka@sollers.co.za", Name = "Felly KANYIKI" },
-                        new { Id = 2, Department = 2, Email = "davidku@sollers.co.za", Name = "David KUELA" },
-                        new { Id = 3, Department = 4, Email = "maryma@sollers.co.za", Name = "Mary MAEL" }
+                        new { Id = 2, Department = 2, Email = "davidku@sollers.co.za", Name = "David KUELA" }
                     );
                 });
 #pragma warning restore 612, 618
