@@ -29,7 +29,7 @@ namespace EmployeeManagement
             options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
 
             services.AddMvc().AddXmlSerializerFormatters();
-            services.AddTransient<IEmployeeRepository, SQLEmployeeRepository>();
+            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
 
            /* services.AddTransient<IEmployeeRepository, MockEmployeeRepository>();
             services.AddSingleton<IEmployeeRepository,MockEmployeeRepository>();
