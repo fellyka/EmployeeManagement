@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
@@ -20,6 +21,13 @@ namespace EmployeeManagement.ViewModels
         [Required]
         public Dept? Department { get; set; }
 
-        public IFormFile Photo { get; set; }
+        //public IFormFile Photo { get; set; }
+
+        /* To support multiple files upload, We have
+           set the data type of Photos property to 
+        List<IFormFile>  - Verify the Definition of
+        IFormFile to see its Properties and Methods
+        */
+        public List<IFormFile> Photos { get; set; }
     }
 }
