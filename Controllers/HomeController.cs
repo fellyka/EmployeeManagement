@@ -99,7 +99,7 @@ namespace EmployeeManagement.Controllers
         {
             Employee employee = _employeeRepository.GetEmployee(id);
             EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel
-            {
+            { //Data to be printed on the edit method
                 id = employee.Id,
                 Name = employee.Name,
                 Email = employee.Email,
@@ -110,5 +110,72 @@ namespace EmployeeManagement.Controllers
             return View(employeeEditViewModel);
         }
 
+        [HttpPost]
+        /* Through model binding, the action method parameter EmployeeEditViewModel receives the 
+           posted edit form data
+        */
+        [HttpPost]
+        public IActionResult Edit(EmployeeEditViewModel model)
+        {
+           /* Verify that the provided data is valid, if not render the edit view */
+           if(ModelState.IsValid) 
+            {
+                /* Retrieve the employee being edited form the db */
+                Employee employee = _employeeRepository.GetEmployee(model.id);
+                /* Update the employee object with the data in the model object*/
+                employee.Name = model.Name;
+                employee.Email = model.Email;   
+                employee.Department = model.Department;
+
+                /* If the user wants to change the photo, a new photo will be uploaded
+                   and the Photo property on the model object receives the uploaded photo
+                   If the Photo property is null, user did not upload a new photo and keeps 
+                   his existing photo*/
+
+                if(model.Photos != null)
+                {
+                    /* If a new photo is uploaded, the existing photo must be deleted
+                       So check, if there is an existing photo, delete*/
+                    if(model.ExistingPhotoPath != null)
+                    {
+                        string filePath = Path.Combine(_hostingEnvironment.WebRootPath,
+                            "images", model.ExistingPhotoPath);
+                        System.IO.File.Delete(filePath);
+                    }
+                    /* Save the new photo in wwwroot/images folder and update PhotoPath property
+                      of the employee object which will be eventually saved in the db */
+                    employee.PhotoPath = ProcessUploadedFile(model);
+                }
+
+                /* Call update method on the repository service passing in the  employee object
+                   to update object to update the data in the database table */
+                  Employee updatedEmployee = _employeeRepository.Update(employee);
+
+                return RedirectToAction("index");
+            }
+
+            return View(model);
+        }
+
+        private string ProcessUploadedFile(EmployeeEditViewModel model)
+        {
+            string uniqueFileName = null;
+
+            if(model.Photos != null && model.Photos.Count > 0)
+            {
+                foreach (IFormFile photo in model.Photos)
+                {
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;/* + new DateTime().ToString();*/
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        photo.CopyTo(fileStream);
+                    }
+                }
+            }
+
+            return uniqueFileName;
+        }
     }//end of HomeController
 }//end of namesapce EmployeeManagement
