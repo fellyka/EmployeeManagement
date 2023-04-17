@@ -92,5 +92,23 @@ namespace EmployeeManagement.Controllers
             }
             return View();
         }
-    }
-}
+
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Employee employee = _employeeRepository.GetEmployee(id);
+            EmployeeEditViewModel employeeEditViewModel = new EmployeeEditViewModel
+            {
+                id = employee.Id,
+                Name = employee.Name,
+                Email = employee.Email,
+                Department = employee.Department,
+                ExistingPhotoPath = employee.PhotoPath
+            };
+
+            return View(employeeEditViewModel);
+        }
+
+    }//end of HomeController
+}//end of namesapce EmployeeManagement
