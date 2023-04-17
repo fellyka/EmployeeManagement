@@ -43,6 +43,11 @@ namespace EmployeeManagement
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                // - 0 is a placeholder that will handle a specific error number
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
+            }
 
             app.UseStaticFiles();
            // app.UseMvcWithDefaultRoute();
@@ -50,16 +55,6 @@ namespace EmployeeManagement
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
-          
-
-            app.Run(async (context) =>
-            {
-                               
-               // await context.Response.WriteAsync(_config["MyKey"]);
-                await context.Response.WriteAsync("\nHello Folks!\n");
-                // await context.Response.WriteAsync(_config["MyCustomKey"]);
-               // await context.Response.WriteAsync($"Hosting Environment: {env.EnvironmentName}");
-            });
         }
     }
 }
