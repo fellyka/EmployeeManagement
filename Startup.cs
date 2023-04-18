@@ -45,6 +45,9 @@ namespace EmployeeManagement
             }
             else
             {
+                app.UseExceptionHandler("/Error");
+
+
                 // - 0 is a placeholder that will handle a specific error number
 
                 /* Because a redirect is issued, the URL in the address bar changes
