@@ -46,7 +46,15 @@ namespace EmployeeManagement
             else
             {
                 // - 0 is a placeholder that will handle a specific error number
-                app.UseStatusCodePagesWithRedirects("/Error/{0}");
+
+                /* Because a redirect is issued, the URL in the address bar changes
+                   Returns a status code(200) when actually an error occured which isn't 
+                   semantically correct - Rather use "UseStatusCodePagesWithReExecute */
+
+                //app.UseStatusCodePagesWithRedirects("/Error/{0}");
+
+                /* Re-execute the pipeline and returns the original status code(404 for example)*/
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
 
             app.UseStaticFiles();
