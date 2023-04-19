@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Models;
 using EmployeeManagement.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using System.Linq;
 
 namespace EmployeeManagement.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -23,6 +25,7 @@ namespace EmployeeManagement.Controllers
             _employeeRepository = employeeRepository;
             _hostingEnvironment = hostingEnvironment;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var model = _employeeRepository.GetAllEmployee();
@@ -56,6 +59,7 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         /* We could also use IActionResult since RedirectToActionResult inherits from 
            IActionResult 
              public RedirectToActionResult Create(Employee employee) 
@@ -125,8 +129,8 @@ namespace EmployeeManagement.Controllers
             return View(employeeEditViewModel);
         }
 
-        [HttpPost]
-        /* Through model binding, the action method parameter EmployeeEditViewModel receives the 
+      /*  [HttpPost]
+         Through model binding, the action method parameter EmployeeEditViewModel receives the 
            posted edit form data
         */
         [HttpPost]
@@ -172,6 +176,7 @@ namespace EmployeeManagement.Controllers
             return View(model);
         }
 
+        
         public IActionResult Delete (int id)
         {
             //To be implemented
