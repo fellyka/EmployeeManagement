@@ -31,7 +31,7 @@ namespace EmployeeManagement.Controllers
 
         public IActionResult Details(int? id)
         {
-            throw new Exception("An exception happened");
+            //throw new Exception("An exception happened");
             Employee employee = _employeeRepository.GetEmployee(id.Value);
             {
                 if(employee == null)
