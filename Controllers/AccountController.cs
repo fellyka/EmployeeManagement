@@ -55,5 +55,15 @@ namespace EmployeeManagement.Controllers
             }
             return View(model);
         }
+
+        /* We'll se a POST request to log the user out. Using a GET request to log out the user is not recommended
+           because the approcah may be absued. A malicious user may trick you into clicking an image element where the 
+           src attribute is set to the application logout url. As a result you'll be unknowingly logget out */
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index","home");
+        }
     }
 }
