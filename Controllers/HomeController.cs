@@ -172,6 +172,12 @@ namespace EmployeeManagement.Controllers
             return View(model);
         }
 
+        public IActionResult Delete (int id)
+        {
+            //To be implemented
+            return View();
+        }
+
         private string ProcessUploadedFile(EmployeeCreateViewModel model)
         {
             string uniqueFileName = null;
@@ -192,5 +198,7 @@ namespace EmployeeManagement.Controllers
 
             return uniqueFileName;
         }
+
+
     }//end of HomeController
 }//end of namesapce EmployeeManagement
