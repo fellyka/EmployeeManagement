@@ -93,8 +93,15 @@ namespace EmployeeManagement.Controllers
                     {
                         /* This can cause a serious security risk : The Open Redirect Attack 
                            Meaning you might be redirected to an unknown(or uncoded) site
+
+                        An application becomes vulnerable to Open Redirect Attacks:
+                          **It redirects to an URL that's specified via the request such as
+                          **uerystring or from data
+                          *
+                          **The redirection is performed without checking if the URL is a local URL
                          */
-                        return Redirect(returnUrl);
+                       // return Redirect(returnUrl);
+                       return LocalRedirect(returnUrl);
                     }
                    
                 }
