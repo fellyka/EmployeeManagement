@@ -80,7 +80,7 @@ namespace EmployeeManagement.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if(ModelState.IsValid) //If data are ok
             {
@@ -88,6 +88,17 @@ namespace EmployeeManagement.Controllers
                     model.Email,model.Password,model.RememberMe,false);
 
                 if(result.Succeeded) 
+                {
+                    if(!string.IsNullOrEmpty(returnUrl))
+                    {
+                        /* This can cause a serious security risk : The Open Redirect Attack 
+                           Meaning you might be redirected to an unknown(or uncoded) site
+                         */
+                        return Redirect(returnUrl);
+                    }
+                   
+                }
+                else
                 {
                     return RedirectToAction("index", "home");
                 }
