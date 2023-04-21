@@ -33,9 +33,9 @@ namespace EmployeeManagement.Controllers
         [HttpPost]
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult IsEmailInUse(string email)
+        public async Task<IActionResult> IsEmailInUse(string email)
         {
-           var user = _userManager.FindByEmailAsync(email);
+           var user = await _userManager.FindByEmailAsync(email);
            if(user == null)
             {
                 return Json(true);
