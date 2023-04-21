@@ -25,6 +25,27 @@ namespace EmployeeManagement.Controllers
             return View();
         }
 
+        /*
+         This method does client-side validation. It check whether the email has been used 
+         by another person in the system to register himself. This validation is done on the
+         server side
+         */
+        [HttpPost]
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult IsEmailInUse(string email)
+        {
+           var user = _userManager.FindByEmailAsync(email);
+           if(user == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json($"Email {email} is already in use");
+            }
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
