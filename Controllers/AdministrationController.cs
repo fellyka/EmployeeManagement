@@ -35,7 +35,7 @@ namespace EmployeeManagement.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "home");
+                    return RedirectToAction("ListRoles", "Administration");
                 }
 
                 //Should errors occur
@@ -48,6 +48,13 @@ namespace EmployeeManagement.Controllers
             }
            
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListRoles() 
+        {
+          var roles =   _roleManager.Roles;
+          return View(roles);
         }
     }
 
