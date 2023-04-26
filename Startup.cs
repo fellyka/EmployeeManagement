@@ -31,7 +31,7 @@ namespace EmployeeManagement
             services.AddDbContextPool<AppDbContext>(options =>
             options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 /* Configure the IdentityOptions class  - The class has many property
                    To configure to meet our password requirements

@@ -1,4 +1,5 @@
-﻿using EmployeeManagement.ViewModels;
+﻿using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +10,11 @@ namespace EmployeeManagement.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, 
-            SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, 
+            SignInManager<ApplicationUser> signInManager)
         {
            _userManager = userManager;
            _signInManager = signInManager;
@@ -53,7 +54,7 @@ namespace EmployeeManagement.Controllers
             if(ModelState.IsValid) // Is model valid?
             { 
                 //Copy data from RegisterViewModel to IdentityUser
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, City = model.City };
 
                 //Store data in AspNetUsers db table
                 //The password is present in our model of incoming object - Read also about Data Binding
