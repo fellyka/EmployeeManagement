@@ -1,0 +1,123 @@
+﻿@*
+    Think of this page as the Master page
+    This page can include a section. A section can be optional or manadatory.
+    The section provides a way to organise where certains elements should be placed.
+*@
+
+@inject SignInManager<IdentityUser> signInManager;
+@* ﻿@inject SignInManager<ApplicationUser> signInManager;  *@
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <environment include="Development">
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.js"></script>
+ @*    This client-side librairies allow us to implement client side validation *@
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+            asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
+            asp-fallback-test-class="sr-only"
+            asp-fallback-test-property="position"
+            asp-fallback-test-value="absolute"
+            asp-suppress-fallback-integrity="true">
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+            crossorigin="anonymous"></script>
+    </environment>
+
+    <link href="~/css/stylet.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand">
+          <img src="~/images/SollersLogo.png" height="30" width="30" />
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar" >
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a asp-controller="home" asp-action="index" class="nav-link">List</a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="home" asp-action="create" class="nav-link">Create</a>
+            </li>
+            
+
+
+                    @*  @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a asp-controller="Administration" asp-action="ListUsers" class="dropdown-item">Users</a>
+                    <a asp-controller="Administration" asp-action="ListUsers" class="dropdown-item">Roles</a>
+                </div>
+                </li>
+            } *@
+
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            @*If the user is signed-in display Logout link*@
+              @if(signInManager.IsSignedIn(User)) @* The method to use to check if a user is signed in - User = Claims principal property that returns the current logged in user *@
+          @*  @if(true) *@
+            {
+                  <li class="nav-item">
+                      @*It's better to use the post request/method to log out the user
+                        Logging out a user using a post request is not recommended. This approach may be abused,
+                        For example A malicious user may trick you into clicking an image element where the source attribute of that image 
+                        is set to the loggout url of your application. Now when yo click on that image, you're logged out of the application
+                        without realising it and all of the sudden you're confused as to why did the application log me out. To avoid that,
+                        we use the post request, as seen in the form below.
+                      *@
+                      <form method="post" asp-controller="account" asp-action="logout">
+                          <button type="submit" style="width:auto" class="nav-link btn btn-link py-0">
+                              Logout @User.Identity.Name
+                          </button>
+                      </form>
+                  </li>
+           }
+
+             else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="account" asp-action="register"> Register</a>
+                </li>        
+            
+              <li class="nav-item">
+                  <a class="nav-link" asp-controller="account" asp-action="login">Login</a>
+              </li>
+            } 
+        </ul>
+
+       </div>
+    </nav>
+    <div >
+        @RenderBody()
+    </div>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("scripts", required:true)
+    }
+    </div>
+</body>
+</html>
+
+

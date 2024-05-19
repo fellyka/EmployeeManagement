@@ -1,0 +1,47 @@
+﻿@* To create a strongly Type View, Specify model type in the view using @model directive
+   Like in this view @model EmployeeManagement.Models.Employee
+   To access the model object properties, we use @Model
+   It usually better to avoid using ViewData and ViewBage because they don't provide compile-time ype
+   checking and intellisense.
+   Strongly Typed View provides compile-time type checking and intellisense
+*@
+@* @model EmployeeManagement.Models.Employee;  *@
+
+@model HomeDetailsViewModels;
+@{
+    //See _VewStart.chstml
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee details";
+    var photoPath = "~/Images/" + (Model.Employee.PhotoPath ?? "noimage.png");
+}
+
+
+<div class="row justify-content-center">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-body text-center">
+               @*  
+               Image Tag Helper enhances the <img /> tag to provide cache-busting behavior for static image files. 
+               Based on the content of the image, a unique hash value is calculated and accepted to image URL
+               Each time the image on the server changes a new hash value is calculated and cached
+               *@
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+
+                <h4>Employee ID : @Model.Employee.Id</h4>
+                <h4>Email : @Model.Employee.Email</h4>
+                <h4>Department : @Model.Employee.Department</h4>
+
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+                <a asp-controller="home" asp-action="edit"  asp-route-id="@Model.Employee.Id" class="btn btn-primary">Edit</a>
+                <a asp-controller="home" asp-action="delete" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/customscript.js"></script>
+}
+   
