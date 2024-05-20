@@ -51,7 +51,14 @@ namespace EmployeeManagement
             /***************************************************************************************/
             /**************************************************************************************/
 
-            /*Add identity service*/
+            /*Add identity service
+             
+            What's Asp .Net Core Identity? 
+             -It allows us to CRUD User account, Account confirmation, Authentication and Authorization, Password Recovery, 2factor authenticaton, Support external login providers
+              like Microsoft, Facebook, Google,etc
+
+             
+             */
             builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<EmployeeDbContext>();
 
