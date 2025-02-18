@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // This line adds MVC services to the dependency injection container.
 builder.Services.AddControllersWithViews();
 
+
 // This line builds the web application using the configuration provided by the builder
 var app = builder.Build();
 
@@ -20,14 +21,16 @@ if(app.Environment.IsDevelopment())
 // Serve static files from the wwwroot folder
 app.UseStaticFiles();
 
+app.MapGet("/", () => "Hello World!");
 
 // Map endpoints to controllers
 app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
 
-app.MapGet("/", () => "Hello World!");
+
 
 // This line starts the web application and begins listening for incoming requests.
 app.Run();
