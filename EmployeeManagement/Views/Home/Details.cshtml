@@ -1,0 +1,24 @@
+﻿@model EmployeeManagement.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<div class="container">
+    <h1 class="display-4">Employee Details</h1>
+    <div class="row">
+        <div class="col-md-4">
+            @* <img src="@Model.PhotoPath" alt="Employee Photo" class="img-fluid rounded-circle" /> *@
+        </div>
+        <div class="col-md-8">
+            <h2>@Model.Name</h2>
+            <p><strong>Department:</strong> @Model.Department</p>
+            <p><strong>Email:</strong> <a href="mailto:@Model.Email">@Model.Email</a></p>
+            @* <p><strong>Contact Preference:</strong> @Model.ContactPreference</p>
+            <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+            <p><strong>Gender:</strong> @Model.Gender</p>
+            <p><strong>Date of Birth:</strong> @Model.DateOfBirth.ToString("dd/MM/yyyy")</p>
+            <p><strong>Is Active:</strong> @(Model.IsActive ? "Yes" : "No")</p> *@
+        </div>
+    </div>
+</div>

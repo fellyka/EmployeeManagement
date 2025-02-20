@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // This line adds MVC services to the dependency injection container.
 builder.Services.AddControllersWithViews();
 
+/*This line adds the EmployeeRepository service to the dependency injection container.*/
 builder.Services.AddScoped<IEmployeeRepository, MockEmployeeRepository>();
 
 
