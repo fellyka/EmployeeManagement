@@ -17,10 +17,16 @@ namespace EmployeeManagement.Controllers
             return "";
         }
 
-        public ActionResult Details(int id)
+        public ViewResult Details(int id)
         {
-            Employee model = _employeeRepository.GetEmployee(5);
-            return View(model);
+            /*Different ways of passing data a view from a controller: ViewData, ViewBag and Stronlgy typed View(The one we'll use in our app)*/
+           
+            /*Let us use ViewData : It's a Dictionary of weakly typed objects that uses string keys to store and retrieve data*/
+            Employee model = _employeeRepository.GetEmployee(7);
+            /*The Key here is Employee for the model, and PageTitle for the Employee Details, which is the title of our page*/
+            ViewData["Employee"] = model;
+            ViewData["PageTitle"] = "Employee Details";
+            return View();
         }
     }
 }

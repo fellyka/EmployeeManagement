@@ -1,24 +1,25 @@
 ﻿@model EmployeeManagement.Models.Employee
 
-@{
-    ViewData["Title"] = "Employee Details";
-}
 
-<div class="container">
-    <h1 class="display-4">Employee Details</h1>
-    <div class="row">
-        <div class="col-md-4">
-            @* <img src="@Model.PhotoPath" alt="Employee Photo" class="img-fluid rounded-circle" /> *@
-        </div>
-        <div class="col-md-8">
-            <h2>@Model.Name</h2>
-            <p><strong>Department:</strong> @Model.Department</p>
-            <p><strong>Email:</strong> <a href="mailto:@Model.Email">@Model.Email</a></p>
-            @* <p><strong>Contact Preference:</strong> @Model.ContactPreference</p>
-            <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
-            <p><strong>Gender:</strong> @Model.Gender</p>
-            <p><strong>Date of Birth:</strong> @Model.DateOfBirth.ToString("dd/MM/yyyy")</p>
-            <p><strong>Is Active:</strong> @(Model.IsActive ? "Yes" : "No")</p> *@
-        </div>
-    </div>
+
+ <h3>@ViewData["PageTitle"]</h3> 
+ @{
+    var employee = ViewData["Employee"] as EmployeeManagement.Models.Employee;
+ }
+
+ <div>
+    Name: @employee!.Name
 </div>
+<div>
+    Name: @employee!.Email
+</div>
+<div>
+    Name: @employee!.Department
+</div>
+
+@* Note: By using ViewData, we're making the Details.cshtml a loosely data view - meaning the view doesn't know the type of the data is storing against the random keys 
+"PageTitle" and "Employee" at compile time. The view will know the type of data we are storing in these keys only at runtime, when these keys are resolved.
+We will also not have Intelisence and we can make mistakes while accessing the data stored in these keys.
+The important point to keep in mind is that ViewDate is Dynamically resolved at runtime. It does not provide compile-time type checking.
+For these reason, the use of ViewData is very limited to data such as ViewData["PageTitle"] above. 
+ *@
