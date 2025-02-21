@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Models;
+using EmployeeManagement.ViewModels;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,10 +21,14 @@ namespace EmployeeManagement.Controllers
         public ViewResult Details(int id)
         {
             /*Different ways of passing data a view from a controller: ViewData, ViewBag and Stronlgy typed View(The one we'll use in our app)*/
-           
-            Employee model = _employeeRepository.GetEmployee(7);
-            ViewBag.PageTitle = "Employee Details";
-            return View(model);
+
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                Employee = _employeeRepository.GetEmployee(8),
+                PageTitle = "Employee Details"
+            };
+            
+            return View(homeDetailsViewModel);
         }
     }
 }

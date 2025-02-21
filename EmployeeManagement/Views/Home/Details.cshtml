@@ -1,4 +1,4 @@
-﻿@model EmployeeManagement.Models.Employee
+﻿@model EmployeeManagement.ViewModels.HomeDetailsViewModel
 
 
 
@@ -6,13 +6,13 @@
 
 
  <div>
-    Name: @Model!.Name
+    Name: @Model!.Employee.Name
 </div>
 <div>
-    Email: @Model!.Email
+    Email: @Model!.Employee.Email
 </div>
 <div>
-    Department: @Model!.Department
+    Department: @Model!.Employee.Department
 </div>
 
 @* Note: Now our view is a strongly typed view. We can access the properties of the Employee model using the Model keyword.
