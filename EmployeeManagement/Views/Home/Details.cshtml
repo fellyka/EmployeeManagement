@@ -2,24 +2,19 @@
 
 
 
- <h3>@ViewData["PageTitle"]</h3> 
- @{
-    var employee = ViewData["Employee"] as EmployeeManagement.Models.Employee;
- }
+ <h3>@ViewBag.PageTitle</h3> 
+
 
  <div>
-    Name: @employee!.Name
+    Name: @ViewBag.employee!.Name
 </div>
 <div>
-    Name: @employee!.Email
+    Email: @ViewBag.employee!.Email
 </div>
 <div>
-    Name: @employee!.Department
+    Department: @ViewBag.employee!.Department
 </div>
 
-@* Note: By using ViewData, we're making the Details.cshtml a loosely data view - meaning the view doesn't know the type of the data is storing against the random keys 
-"PageTitle" and "Employee" at compile time. The view will know the type of data we are storing in these keys only at runtime, when these keys are resolved.
-We will also not have Intelisence and we can make mistakes while accessing the data stored in these keys.
-The important point to keep in mind is that ViewDate is Dynamically resolved at runtime. It does not provide compile-time type checking.
-For these reason, the use of ViewData is very limited to data such as ViewData["PageTitle"] above. 
+@* Note: ViewBag is a wrapper around ViewData. With ViewBag, we don't have to do any casting like this: "var employee = ViewData["Employee"] as EmployeeManagement.Models.Employee;
+ " like we did in ViewData. We can directly access the property of the model like this: "Name: @ViewBag.Employee.Name"
  *@
