@@ -21,6 +21,15 @@ public class MockEmployeeRepository : IEmployeeRepository
         };
     }
 
+    public IEnumerable<Employee> GetAllEmployees()
+    {
+        if (_employeeList == null)
+        {
+            throw new ArgumentNullException(nameof(_employeeList), "Employee list is null.");
+        }
+        return _employeeList;
+    }
+
     public Employee GetEmployee(int id)
     {
         if (id <= 0)
