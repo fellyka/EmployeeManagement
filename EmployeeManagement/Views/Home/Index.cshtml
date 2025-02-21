@@ -1,10 +1,25 @@
 ﻿@model IEnumerable<EmployeeManagement.Models.Employee>
 
-@foreach(var employee in Model)
-{
-    <div>
-        <h2>@employee.Name</h2>
-        <p>@employee.Email</p>
-        <p>@employee.Department</p>
-    </div>
-}
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title></head>
+    <body>
+        <table>
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Email</th><th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.Name</td>
+                    <td>@employee.Email</td>
+                    <td>@employee.Department</td>
+                </tr>
+            }
+        </tbody>
+        </table>
+    </body>
+</html>
