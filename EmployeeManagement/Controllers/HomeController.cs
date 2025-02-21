@@ -21,12 +21,9 @@ namespace EmployeeManagement.Controllers
         {
             /*Different ways of passing data a view from a controller: ViewData, ViewBag and Stronlgy typed View(The one we'll use in our app)*/
            
-            /*Let us use ViewBag : It's a Wrapper around ViewData*/
             Employee model = _employeeRepository.GetEmployee(7);
-            
-            ViewBag.Employee = model;
             ViewBag.PageTitle = "Employee Details";
-            return View();
+            return View(model);
         }
     }
 }

@@ -6,15 +6,14 @@
 
 
  <div>
-    Name: @ViewBag.employee!.Name
+    Name: @Model!.Name
 </div>
 <div>
-    Email: @ViewBag.employee!.Email
+    Email: @Model!.Email
 </div>
 <div>
-    Department: @ViewBag.employee!.Department
+    Department: @Model!.Department
 </div>
 
-@* Note: ViewBag is a wrapper around ViewData. With ViewBag, we don't have to do any casting like this: "var employee = ViewData["Employee"] as EmployeeManagement.Models.Employee;
- " like we did in ViewData. We can directly access the property of the model like this: "Name: @ViewBag.Employee.Name"
- *@
+@* Note: Now our view is a strongly typed view. We can access the properties of the Employee model using the Model keyword.
+It uses the "@model EmployeeManagement.Models.Employee" directive to specify the model type for the view. *@
