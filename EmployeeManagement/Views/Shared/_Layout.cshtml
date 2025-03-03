@@ -9,5 +9,11 @@
     <div>
         @RenderBody()
     </div>
+    @* <script src="~js/CustomScript.js"></script> *@
+    @if(IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", false)
+    }
+    
 </body>
 </html>
