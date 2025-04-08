@@ -19,13 +19,13 @@ namespace EmployeeManagement.Controllers
             return (View(model));
         }
 
-        public ViewResult Details(int id)
+        public ViewResult Details(int? id)
         {
             /*Different ways of passing data a view from a controller: ViewData, ViewBag and Stronlgy typed View(The one we'll use in our app)*/
 
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(8),
+                Employee = _employeeRepository.GetEmployee(id ?? 10),    
                 PageTitle = "Employee Details"
             };
             

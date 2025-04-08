@@ -36,8 +36,5 @@ app.MapControllerRoute(
 
 //app.MapGet("/", () => "Hello World!");
 
-
-
-
 // This line starts the web application and begins listening for incoming requests.
 app.Run();
