@@ -2,7 +2,8 @@
 {
     public interface IEmployeeRepository
     {
-        Employee GetEmployee(int id);
-        IEnumerable<Employee> GetAllEmployees();
+        Employee GetEmployee(int id);//Get aspecific employees
+
+        IEnumerable<Employee> GetAllEmployees();//Get all emploees
     }
 }
