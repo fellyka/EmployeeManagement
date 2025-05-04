@@ -6,15 +6,27 @@
 
  <h3>@ViewBag.PageTitle</h3> 
 
+<div class="row justify-content-center m-3">
+    <div class="col-12 col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Name</h1>
+            </div>
 
- <div>
-    Name: @Model!.Employee.Name
-</div>
-<div>
-    Email: @Model!.Employee.Email
-</div>
-<div>
-    Department: @Model!.Employee.Department
+            <div class="card-body text-center">
+                <img class="card-img-top" src="~/images/nopic.png" alt="Employee Image" />
+                <h4>Employee ID: @Model.Employee.Id</h4>
+                <h4>Email: @Model.Employee.Email</h4>
+                <h4>Department: @Model.Employee.Department</h4>
+            </div>
+
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-primary">Back</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 @* Note: Now our view is a strongly typed view. We can access the properties of the Employee model using the Model keyword.
