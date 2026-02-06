@@ -1,13 +1,13 @@
-//This line creates a WebApplicationBuilder instance used to configure the web application.
-//It sets ups the environment for building the web application
 using EmployeeManagement.Models;
-
 using System.Runtime.Intrinsics.X86;
 
+//This line creates a WebApplicationBuilder instance used to configure the web application.
+//It sets ups the environment for building the web application
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// This line adds MVC services to the dependency injection container.
+// This line adds MVC services to the dependency injection container for Web applications, not APIs.
+//Usually pair it with app.MapControllerRoute(name: "default", pattern:"{controller=Home}/{action=Index}/{id}?");
 builder.Services.AddControllersWithViews();
 
 /*This line adds the EmployeeRepository service to the dependency injection container.*/
@@ -37,4 +37,5 @@ app.MapControllerRoute(
 //app.MapGet("/", () => "Hello World!");
 
 // This line starts the web application and begins listening for incoming requests.
+//throw new Exception("This is an exception");
 app.Run();

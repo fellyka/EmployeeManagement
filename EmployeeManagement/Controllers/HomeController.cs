@@ -15,6 +15,8 @@ namespace EmployeeManagement.Controllers
         }
         public ViewResult Index()
         {
+            //throw new Exception("This is an exception");
+            ViewBag.Title = "Employee List";    
             var model = _employeeRepository.GetAllEmployees();
             return (View(model));
         }
